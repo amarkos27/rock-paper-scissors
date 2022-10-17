@@ -10,16 +10,24 @@
     <!--
         - Create h1 to welcome user to the game
         - Create three image tags for rock, paper and scissors.
+        - Arrange images and buttons using a div
         - Underneath each image, have a button for the user to click their choice
         - p tag to display result of the game
     -->
-    <img src="./images/rock.png" alt="rock">
-    <button class="option rock">Rock</button>
-    <img src="./images/papers.png" alt="paper">
-    <button class="option paper">Paper</button>
-    <img src="./images/scissors.png" alt="scissors">
-    <button class="option scissors">Scissors</button>
-
+    <div class="container">
+        <div class="unit">
+            <img src="./images/rock.png" alt="rock">
+            <button class="option rock">Rock</button>
+        </div>
+        <div class="unit">
+            <img src="./images/paper.png" alt="paper">
+            <button class="option paper">Paper</button>
+        </div>
+        <div class="unit">
+            <img src="./images/scissors.png" alt="scissors">
+            <button class="option scissors">Scissors</button>
+        </div>
+    </div>
     <script type="text/javascript" src="./script.js"></script>
 </body>
 </html>

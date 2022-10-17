@@ -1,0 +1,28 @@
+.container,
+.unit{
+    display: flex;
+}
+
+.unit{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.container{
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.option{
+    cursor: pointer;
+    padding: 5px 0;
+    width: 100%;
+}
+
+img {
+    height: 250px;
+    width: 250px;
+}
