@@ -4,6 +4,11 @@
          url(./fonts/Silkscreen-Bold.ttf) format('truetype');
 }
 
+@font-face {
+    font-family: Chakra-Petch;
+    src: url(./fonts/ChakraPetch-Bold.ttf) format('truetype');
+}
+
 .container,
 .unit{
     display: flex;
@@ -12,7 +17,6 @@
 .container{
     justify-content: space-around;
     align-items: center;
-    margin-top: 150px;
 }
 
 .container img {
@@ -42,5 +46,12 @@ h1 {
     background: #22313f;
     color: #8dc6ff;
     font-family: Silkscreen, sans-serif;
+    text-align: center;
+}
+
+h2 {
+    margin: 25px 0 100px;
+    color: #f7aa00;
+    font-family: Chakra-Petch, sans-serif;
     text-align: center;
 }
