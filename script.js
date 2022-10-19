@@ -2,8 +2,7 @@
 const rock = document.querySelector('img[alt="rock"]');
 const paper = document.querySelector('img[alt="paper"]');
 const scissors = document.querySelector('img[alt="scissors"]');
-const resultPara = document.querySelector('.result');
-console.log(resultPara);
+const textArea = document.querySelector('h2');
 
 //Function getComputerChoice() for computer's choice
 function getComputerChoice(){
@@ -46,7 +45,7 @@ function playRound(playerChoice, computerChoice){
         case 'paper':
             switch(computerChoice){
                 case 'rock':
-                    result = 'You took this round, paper beats rock';
+                    result = 'You took this round, paper beats rock.';
                     playerWon = true;
                     break;
                 case 'paper':
@@ -92,6 +91,7 @@ function playRound(playerChoice, computerChoice){
 function game(){
     //Define player and computer score
     let playerScore = 0,  compScore = 0;
+    let score = '';
     //Define computer choice, playerChoice and set to null
     let playerChoice = null, compChoice = null;
 
@@ -106,12 +106,54 @@ function game(){
         playerChoice = Event.target.alt;
         compChoice = getComputerChoice();
         let result = playRound(playerChoice, compChoice);
-        
-    };
-    rock.addEventListener('click', continueGame);
+        if(result.playerWon === 0){
+            score = `Player: ${playerScore} Computer: ${compScore}`
+            textArea.textContent = result.result +`\n${score}`;
+        } else if(result.playerWon){
+            playerScore++;
+            score = `Player: ${playerScore} Computer: ${compScore}`
+            textArea.textContent = result.result +`\n${score}`;
+        } else{
+            compScore++;
+            score = `Player: ${playerScore} Computer: ${compScore}`
+            textArea.textContent = result.result +`\n${score}`;
+        }
 
-    //If playerScore OR compScore reaches 5, declare winner, create playAgain button that resets
-    //scores and restarts the game
+        //If playerScore OR compScore reaches 5, declare winner, create playAgain button that resets
+        //scores and restarts the game
+        if(playerScore === 5){
+            textArea.textContent = 'You win! For now...'
+            resetGame();
+        } else if(compScore === 5){
+            textArea.textContent = 'You lose! Better luck next time, chump.'
+            resetGame();
+        }
+    };
+    
+    function resetGame() {
+        rock.removeEventListener('click', continueGame);
+        paper.removeEventListener('click', continueGame);
+        scissors.removeEventListener('click', continueGame);
+
+        playerScore = 0;
+        compScore = 0;
+        let button = document.createElement('button');
+        let buttonArea = document.querySelector('.buttonArea');
+        
+        button.classList.add('btn')
+        button.textContent = 'Go again?';
+        buttonArea.appendChild(button);
+
+        button.addEventListener('click', () => {
+            textArea.textContent = 'Choose your weapon';
+            button.parentNode.removeChild(button);
+            game();
+        });
+    }
+
+    rock.addEventListener('click', continueGame);
+    paper.addEventListener('click', continueGame);
+    scissors.addEventListener('click', continueGame);
 }
 
 game();
