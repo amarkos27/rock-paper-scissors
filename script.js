@@ -1,7 +1,5 @@
 //Take in each possible input (the 3 image buttons)
-const rock = document.querySelector('img[alt="rock"]');
-const paper = document.querySelector('img[alt="paper"]');
-const scissors = document.querySelector('img[alt="scissors"]');
+const buttonList = document.querySelectorAll('img');
 const textArea = document.querySelector('h2');
 
 //Function getComputerChoice() for computer's choice
@@ -96,14 +94,16 @@ function game(){
     let playerChoice = null, compChoice = null;
 
     //Add 3 event listeners for the buttons
+    buttonList.forEach(button => button.addEventListener('click', continueGame));
+
     //Inside each event listener: call playRound() pass player choice based on button, put it in
     //result variable.
     //Set computer choice with getComputerChoice()
     //If playerWon is 0, do nothing
     //If playerWon is true, add 1 to playerScore
-    //If playerWon is false, add one to computer score
-    const continueGame = (Event) => {
-        playerChoice = Event.target.alt;
+    //If playerWon is false, add 1 to computer score
+    function continueGame(e) {
+        playerChoice = e.target.alt;
         compChoice = getComputerChoice();
         let result = playRound(playerChoice, compChoice);
         if(result.playerWon === 0){
@@ -131,9 +131,10 @@ function game(){
     };
     
     function resetGame() {
-        rock.removeEventListener('click', continueGame);
-        paper.removeEventListener('click', continueGame);
-        scissors.removeEventListener('click', continueGame);
+        buttonList.forEach(button => {
+            button.removeEventListener('click', continueGame);
+            button.classList.remove('gameOn');
+        });
 
         playerScore = 0;
         compScore = 0;
@@ -147,13 +148,10 @@ function game(){
         button.addEventListener('click', () => {
             textArea.textContent = 'Choose your weapon';
             button.parentNode.removeChild(button);
+            buttonList.forEach(node => node.classList.add('gameOn'));
             game();
         });
     }
-
-    rock.addEventListener('click', continueGame);
-    paper.addEventListener('click', continueGame);
-    scissors.addEventListener('click', continueGame);
 }
 
 game();

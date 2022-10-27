@@ -24,7 +24,7 @@
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.container img:hover {
+img.gameOn:hover {
     cursor: pointer;
     transform: scale(1.15);
     box-shadow: 0px 0 75px #f7f7f7;
