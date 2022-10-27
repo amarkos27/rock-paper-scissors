@@ -122,10 +122,10 @@ function game(){
         //If playerScore OR compScore reaches 5, declare winner, create playAgain button that resets
         //scores and restarts the game
         if(playerScore === 5){
-            textArea.textContent = 'You win! For now...'
+            textArea.textContent = 'You win! For now...';
             resetGame();
         } else if(compScore === 5){
-            textArea.textContent = 'You lose! Better luck next time, chump.'
+            textArea.textContent = 'You lose! Better luck next time, chump.';
             resetGame();
         }
     };

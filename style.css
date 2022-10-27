@@ -52,7 +52,9 @@ h1 {
 
 h2 {
     white-space: pre-wrap;
-    margin: 25px 0 100px;
+    padding: 35px 0 0;
+    margin: 0;
+    height: 160px;
     color: #f7aa00;
     font-family: Chakra-Petch, sans-serif;
     text-align: center;
